@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>My Ja❤️</title>
+
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden; 
+        position: fixed; 
+        background-color: #fcf6f0; 
+    }
+
+    * { box-sizing: border-box; font-family: 'Georgia', serif; }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #d02090; 
+    }
+
+    .sticker-bg {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100vw; height: 100vh;
+        background-image: url('bgval3.svg');
+        background-size: cover;
+        background-position: center;
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    .container {
+        text-align: center;
+        z-index: 10;
+        padding: 20px;
+        width: 95%; 
+        max-width: 450px; 
+    }
+
+    .screen { display: none; animation: fadeIn 0.6s ease-out; }
+    
+    /* 1st Page Layout */
+    #flower-screen { 
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+        justify-content: center;
+        margin-top: -60px; 
+    }
+
+    .flower-img {
+        width: 100%;
+        max-width: 380px;
+        display: block;
+        margin-bottom: 80px; 
+        animation: floatingFlower 2.5s ease-in-out infinite;
+    }
+
+    @keyframes floatingFlower {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-15px); }
+    }
+
+    .message-pill {
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(5px);
+        padding: 12px 25px;
+        border-radius: 30px;
+        border: 2px solid #ffb6c1;
+        margin-top: -55px; 
+        box-shadow: 0 4px 15px rgba(255, 182, 193, 0.4);
+        z-index: 5;
+    }
+
+    .readable-text-small {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: #ff1493;
+        line-height: 1.3;
+        font-style: italic;
+        margin: 0;
+    }
+
+    /* INVITATION SECTION - TIGHTER SPACING */
+    .invitation-header {
+        color: #ff1493; 
+        font-size: 1.6rem; 
+        margin-bottom: 5px; /* Reduced from 20px */
+    }
+
+    .invitation-wrapper {
+        position: relative;
+        display: inline-block;
+        margin: 5px 0; /* Reduced from 20px */
+        padding-bottom: 30px; /* Reduced from 40px */
+    }
+
+    .click-me-label {
+        position: absolute;
+        bottom: 10px; /* Moved up slightly */
+        left: 50%;
+        transform: translateX(-50%);
+        background: #ff1493;
+        color: white;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: bold;
+        white-space: nowrap;
+        animation: labelPulseBottom 1.2s infinite;
+        box-shadow: 0 4px 10px rgba(255, 20, 147, 0.3);
+    }
+
+    .invitation-svg {
+        width: 85%; /* Slightly smaller for tighter feel */
+        max-width: 300px;
+        cursor: pointer;
+        filter: drop-shadow(0 8px 15px rgba(255, 105, 180, 0.4));
+        animation: heartbeat 1.2s infinite;
+    }
+
+    @keyframes heartbeat {
+        0% { transform: scale(1); }
+        15% { transform: scale(1.08); }
+        30% { transform: scale(1); }
+        45% { transform: scale(1.08); }
+        100% { transform: scale(1); }
+    }
+
+    @keyframes labelPulseBottom {
+        0%, 100% { transform: translateX(-50%) translateY(0); }
+        50% { transform: translateX(-50%) translateY(5px); } 
+    }
+
+    /* DATE DETAILS CARD */
+    .details-box {
+        background: rgba(255, 255, 255, 0.92);
+        padding: 30px 20px;
+        border-radius: 30px;
+        border: 3px double #ff69b4;
+        box-shadow: 0 15px 35px rgba(255, 105, 180, 0.2);
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .detail-row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-bottom: 1px solid rgba(255, 105, 180, 0.15);
+        padding-bottom: 8px;
+    }
+    .detail-row:last-child { border-bottom: none; }
+
+    .detail-label {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #ff69b4;
+        font-weight: bold;
+    }
+
+    .detail-value {
+        font-size: 1.3rem;
+        color: #8b0000;
+        font-weight: 700;
+    }
+
+    /* FINAL SCREEN */
+    .final-card {
+        background: rgba(255, 255, 255, 0.4);
+        padding: 15px;
+        border-radius: 30px;
+        border: 2px solid #ffb6c1;
+        box-shadow: 0 0 20px rgba(255, 182, 193, 0.6);
+        margin-top: -60px;
+        animation: cardGlow 3s infinite alternate;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+    }
+
+    .top-heart {
+        font-size: 2rem;
+        margin-bottom: -50px;
+        animation: floatingHeart 2s ease-in-out infinite;
+    }
+
+    @keyframes floatingHeart {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+
+    @keyframes cardGlow {
+        from { box-shadow: 0 0 15px rgba(255, 20, 147, 0.3); }
+        to { box-shadow: 0 0 30px rgba(255, 20, 147, 0.6); }
+    }
+
+    .final-pic {
+        width: 100%;
+        max-width: 480px;
+        border-radius: 20px;
+        border: none;
+        display: block;
+        margin-bottom: 0px;
+    }
+
+    .final-message-font {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #ff1493;
+        line-height: 1.2;
+        font-style: italic;
+        margin: -50px 0 10px 0; 
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.9), 0 0 15px rgba(255, 20, 147, 0.4);
+        animation: textShine 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes textShine {
+        from { opacity: 0.9; transform: scale(1); }
+        to { opacity: 1; transform: scale(1.02); text-shadow: 0 0 12px rgba(255, 20, 147, 0.8); }
+    }
+
+    .display-gif { width: 100%; max-width: 240px; border-radius: 20px; border: 4px solid white; margin-bottom: 15px; }
+    
+    .question-box {
+        background: rgba(255, 255, 255, 0.85); 
+        padding: 30px 20px; 
+        border-radius: 30px;
+        border: 3px solid #ff69b4;
+        border-top: 10px solid #eb91df; 
+    }
+
+    .buttons { position: relative; height: 100px; display: flex; justify-content: center; align-items: center; gap: 20px; }
+    button { padding: 14px 30px; font-size: 1.1rem; border: none; border-radius: 15px; cursor: pointer; font-weight: bold; }
+    #yesBtn { background: #ff1493; color: white; }
+    #noBtn { background: #ffc0cb; color: #d02090; }
+
+    .heart-bg { position: absolute; top: -10%; font-size: 25px; animation: fall linear forwards; z-index: 1; pointer-events: none; }
+    @keyframes fall { to { transform: translateY(110vh); } }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    .tap-hint { font-size: 0.85rem; color: #8b0000; margin-top: 15px; font-weight: bold; opacity: 0.7; }
+</style>
+</head>
+
+<body>
+
+<div class="sticker-bg"></div>
+
+<div class="container">
+    <div id="flower-screen" class="screen" onclick="showScreen('question-screen')">
+        <img src="flower.svg" class="flower-img" alt="Flowers for you">
+        <div class="message-pill">
+            <p class="readable-text-small">Before anything else,<br>here are flowers for you!</p>
+        </div>
+        <span class="tap-hint" style="margin-top: 25px;">(Tap to continue)</span>
+    </div>
+
+    <div id="question-screen" class="screen">
+        <div class="question-box">
+            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnJmb3ppOTM0YWljazF2bjRlYTl0ZjJrYzJhaGh0aG82ZWNpbzJ0aSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/Xr9TlAqw3S7VPOrftK/giphy.gif" class="display-gif">
+            <h1 style="color: #ff0000; font-size: 1.8rem; margin: 10px 0 20px 0;">Will you be my Valentine?</h1>
+            <div class="buttons" id="btnContainer">
+                <button id="yesBtn" onclick="showScreen('invitation-screen')">Yes</button>
+                <button id="noBtn">No</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="invitation-screen" class="screen">
+        <h2 class="invitation-header">You have an invitation!</h2>
+        <div class="invitation-wrapper" onclick="showScreen('details-screen')">
+            <img src="invi.svg" class="invitation-svg" alt="Invitation">
+            <div class="click-me-label">Click to open!</div>
+        </div>
+    </div>
+
+    <div id="details-screen" class="screen" onclick="showScreen('final-screen')">
+        <div class="details-box">
+            <h2 style="margin: 0; font-size: 1.6rem;">The Date Details ❤️</h2>
+            <div class="detail-row">
+                <span class="detail-label">📅 Date</span>
+                <span class="detail-value">February 15, 2026</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">📍 Place</span>
+                <span class="detail-value">The Parkview Lounge</span>
+                <span style="font-size: 0.85rem; color: #8b0000; font-weight: bold;">Baguio City</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">⏰ Time</span>
+                <span class="detail-value">7:00 PM - 9:00 PM</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">✨ Theme</span>
+                <span class="detail-value">Anything</span>
+            </div>
+        </div>
+        <p class="tap-hint">(Tap anywhere to finish)</p>
+    </div>
+
+    <div id="final-screen" class="screen">
+        <div class="final-card">
+            <div class="top-heart">❤️</div>
+            <img src="pic.svg" class="final-pic" alt="Our Special Moment">
+            <p class="final-message-font">
+                Happy <br> Valentine's Day, Ja! <br> See you soon!
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showScreen(screenId) {
+        const screens = document.querySelectorAll('.screen');
+        screens.forEach(s => s.style.display = 'none');
+        document.getElementById(screenId).style.display = 'block';
+    }
+
+    const noBtn = document.getElementById("noBtn");
+    const btnContainer = document.getElementById("btnContainer");
+
+    function moveNoButton() {
+        noBtn.style.position = "absolute";
+        const maxX = btnContainer.clientWidth - noBtn.offsetWidth;
+        const maxY = btnContainer.clientHeight - noBtn.offsetHeight;
+        noBtn.style.left = Math.floor(Math.random() * maxX) + "px";
+        noBtn.style.top = Math.floor(Math.random() * maxY) + "px";
+    }
+
+    noBtn.addEventListener("mouseover", moveNoButton);
+    noBtn.addEventListener("touchstart", (e) => { e.preventDefault(); moveNoButton(); });
+
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.classList.add('heart-bg');
+        heart.innerHTML = ['💖', '❤️', '🌸'][Math.floor(Math.random() * 3)]; 
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 5000);
+    }
+    setInterval(createHeart, 400);
+</script>
+
+</body>
+</html>
